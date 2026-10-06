@@ -1,0 +1,41 @@
+PUT PINKU'S VOICE CLIPS IN THIS FOLDER.
+
+You said you have a screen recording with Pinku's real voice. A screen
+recording is a video file, and browsers cannot use the video's audio, so
+it has to be turned into sound files first. The easiest free way:
+
+   1. Go to any free "video to mp3" converter on the web, OR use
+      VLC Media Player (free) -> Media -> Convert / Save.
+   2. Load your screen recording.
+   3. Convert it to MP3.
+   4. You now have ONE long mp3 of the whole recording.
+
+Then cut that long file into four short clips. In VLC, or any free audio
+editor (Audacity is free and good), trim each line and export it.
+
+Save the four clips in THIS folder with EXACTLY these names.
+
+mp3 is best, but ogg and wav work too - keep the same name before the
+dot (so pinku_dialogue_01.wav is fine). You do NOT have to convert to
+mp3 if your clips are already ogg or wav.
+
+    pinku_dialogue_01.mp3   <- when the bosses appear:
+                                "Oh! Piggu, you actually came. Happy birthday, little piggy!"
+
+    pinku_dialogue_02.mp3   <- the first time you hit a boss:
+                                "Careful! I am not going easy on you today!"
+
+    pinku_dialogue_03.mp3   <- when Pinku is defeated:
+                                "Okay, okay! You win. Paddy, you are on your own!"
+
+    pinku_dialogue_04.mp3   <- during the birthday ending:
+                                "Happy birthday, Piggu. We love you."
+
+If your recording says something different, that is completely fine -
+just keep the four filenames and the game will play your real audio.
+
+IMPORTANT: only use these recordings if you have Pinku's permission.
+If you would rather not, do nothing: the same lines appear as on-screen
+text and the game works normally without any voice.
+
+You can delete this text file once your clips are in.

@@ -1,0 +1,25 @@
+Put the sound effect files in THIS folder.
+
+The game looks for exactly these filenames:
+
+    jump.mp3             soft cute jump
+    land.mp3             gentle landing
+    collect_item.mp3     everyday pickup
+    collect_present.mp3  present opened
+    star_chime.mp3       star collected
+    checkpoint.mp3       signpost reached
+    hurt.mp3             soft cartoon damage
+    victory.mp3          level finished
+    boss_appear.mp3      bosses arrive
+    boss_attack.mp3      a boss throws something
+    boss_defeat.mp3      a boss is beaten
+    celebration.mp3      birthday ending cheer
+    ui_click.mp3         button tap
+    ui_pause.mp3         pause and resume
+    finish_bell.mp3      birthday bell at the finish line
+    balloon.mp3          balloon squeak when you pass one
+    cake_sparkle.mp3     cake twinkle when you pass one
+
+Keep those exact names. You can delete this text file once your sounds are in.
+
+Any file that is missing is simply silent - the game carries on normally.

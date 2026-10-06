@@ -1,0 +1,12 @@
+Put the background music files in THIS folder.
+
+The game looks for exactly these three filenames:
+
+    birthday_theme.mp3     <- levels 1 and 2, the chill birthday tune
+    boss_theme.mp3         <- level 3, the boss fight
+    birthday_ending.mp3    <- the ending celebration
+
+Keep those exact names and the game will find them automatically.
+You can delete this text file once your music is in.
+
+If a file is missing the game still runs - that track is just silent.

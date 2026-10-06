@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Birthday Platformer - Character Test</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="page">
+
+    <header id="topbar">
+      <h1>Character Test</h1>
+      <p class="sub">Stage 2: the 3 characters and all 6 animations</p>
+    </header>
+
+    <section class="panel">
+      <h2>The cast</h2>
+      <div id="cast" class="cast"></div>
+      <p class="hint">Click a character, or press <b>1</b>, <b>2</b> or <b>3</b>, to choose who moves in the test area below.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Live control test</h2>
+      <div class="stage-wrap">
+        <canvas id="stage" width="400" height="360"></canvas>
+      </div>
+      <p class="hint state" id="stateLine">State: idle</p>
+      <p class="hint">
+        <b>Move:</b> Arrow keys or A / D &nbsp;|&nbsp;
+        <b>Jump:</b> Space, W or Up &nbsp;|&nbsp;
+        <b>Hurt:</b> H &nbsp;|&nbsp;
+        <b>Victory:</b> V &nbsp;|&nbsp;
+        <b>Switch character:</b> 1 / 2 / 3
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>All animations</h2>
+      <div class="gallery-scroll">
+        <div id="gallery" class="gallery"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/characters.js"></script>
+  <script src="js/test-screen.js"></script>
+  <script src="js/sheet-check.js"></script>
+</body>
+</html>

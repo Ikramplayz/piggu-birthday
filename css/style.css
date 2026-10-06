@@ -1,0 +1,301 @@
+/* style.css - Piggu's Birthday Adventure
+
+   Built mobile browser first. The whole page is one screen tall with no
+   scrolling, the game keeps its 16:9 shape on any phone, and the touch
+   buttons sit BELOW the game so they never cover what you are playing. */
+
+:root {
+  --bg: #2a1f33;
+  --ink: #fff3f8;
+  --muted: #cbb6d4;
+  --accent: #ffd166;
+  --pink: #ff8fb1;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+}
+
+/* ------------------------------------------------------------- game area */
+
+/* 16:9, sized so it always fits the space left over above the buttons.
+   On a tall portrait phone the width is the limit; on a wide landscape
+   phone the height is. Either way it keeps its shape and never scrolls. */
+.game-wrap {
+  position: relative;
+  width: min(100%, calc((100dvh - 170px) * 16 / 9));
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* No image-rendering hint here on purpose. The canvas is now rendered
+   at the screen's own resolution, so letting the browser scale it
+   smoothly keeps it sharp. "pixelated" would re-blockify it. */
+#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* ---------------------------------------------------------------- overlay */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  text-align: center;
+  background: rgba(42, 31, 51, 0.82);
+}
+
+.overlay.hidden { display: none; }
+
+.overlay-title {
+  margin: 0;
+  font-size: clamp(15px, 3.6vw, 30px);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.overlay-sub {
+  margin: 0;
+  max-width: 34em;
+  font-size: clamp(10px, 1.9vw, 15px);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.overlay-sub b { color: var(--ink); }
+.overlay-sub.keys { color: #9d8aa6; }
+
+/* -------------------------------------------------------------- buttons */
+
+.btn {
+  margin-top: 4px;
+  padding: clamp(7px, 1.6vw, 12px) clamp(16px, 3.6vw, 30px);
+  border: 0;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #3a1f2c;
+  font: inherit;
+  font-size: clamp(12px, 2.2vw, 17px);
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn.small {
+  padding: 7px 16px;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* -------------------------------------------------------- touch controls */
+
+/* Big enough for a thumb, and underneath the game so nothing is hidden. */
+.touchpad {
+  width: min(100%, calc((100dvh - 170px) * 16 / 9));
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.touchpad.hidden { display: none; }
+
+.tbtn {
+  flex: 1 1 0;
+  height: clamp(58px, 11vh, 88px);
+  border: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--ink);
+  font: inherit;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.tbtn.held {
+  background: var(--accent);
+  color: #3a2a10;
+}
+
+.tbtn-jump {
+  flex: 1.5 1 0;
+  font-size: clamp(15px, 2.6vw, 20px);
+  letter-spacing: 1px;
+  background: rgba(255, 143, 177, 0.32);
+}
+
+.tbtn-jump.held {
+  background: var(--pink);
+  color: #3a1f2c;
+}
+
+/* ------------------------------------------------------------------ hud */
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.hint {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Landscape phones are short: shrink everything so the buttons stay on
+   screen and the game keeps as much room as possible. */
+@media (max-height: 460px) {
+  #app { gap: 6px; padding: 5px; }
+  .game-wrap,
+  .touchpad { width: min(100%, calc((100dvh - 120px) * 16 / 9)); }
+  .tbtn { height: clamp(46px, 14vh, 64px); }
+  .hint { display: none; }
+}
+
+/* --------------------------------------------------- fight start message */
+
+/* Shows for a moment when the boss fight actually begins. It never takes
+   a tap (pointer-events: none) so it can not cover the touch controls or
+   swallow a jump. */
+.msg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34%;
+  padding: 10px 12px;
+  text-align: center;
+  background: rgba(42, 31, 51, 0.78);
+  pointer-events: none;
+}
+
+.msg.hidden { display: none; }
+
+.msg-title {
+  margin: 0;
+  font-size: clamp(13px, 3vw, 24px);
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  color: var(--accent);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.msg-sub {
+  margin: 4px 0 0;
+  font-size: clamp(10px, 1.9vw, 14px);
+  color: #ffe3ef;
+}
+
+/* ---------------------------------------------------------- audio panel */
+
+/* Compact, and it stops the game while it is open so it never hides
+   anything you are actually playing. */
+.overlay-audio {
+  gap: 5px;
+  padding: 12px;
+  background: rgba(42, 31, 51, 0.94);
+}
+
+.audio-title { font-size: clamp(13px, 2.6vw, 20px); }
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 320px);
+  margin: 0;
+}
+
+.slider-label {
+  flex: 0 0 84px;
+  text-align: left;
+  font-size: clamp(10px, 1.8vw, 13px);
+  color: var(--muted);
+}
+
+/* A tall hit area and a fat thumb, so it is easy to drag with a finger. */
+.slider-row input[type="range"] {
+  flex: 1 1 auto;
+  height: 30px;
+  margin: 0;
+  background: transparent;
+  accent-color: var(--pink);
+  touch-action: manipulation;
+}
+
+.mute-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn.tiny {
+  padding: 6px 11px;
+  font-size: clamp(9px, 1.6vw, 12px);
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--ink);
+}
+
+/* A muted button stays visibly pushed in, so the state is obvious. */
+.btn.tiny.off {
+  background: rgba(255, 209, 102, 0.85);
+  color: #3a2a10;
+}
+
+@media (max-height: 460px) {
+  .overlay-audio { gap: 2px; padding: 8px; }
+  .slider-row input[type="range"] { height: 20px; }
+  .overlay-audio .btn.tiny { padding: 4px 8px; }
+  .slider-label { flex: 0 0 66px; }
+}
